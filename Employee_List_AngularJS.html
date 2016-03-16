@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Employee List</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script src="Employee_List.js"></script>
+	<link type="text/css" rel="stylesheet" href="Employee_List.css" />
+	<meta charset="UTF-8"/>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<!--  Sets the number of rows displayed -->
+		<div id="rowNumber">
+		Rows <input type="number" step="1" min="15" max="42" ng-model="rowLimit"/>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<!-- This function sorts the data -->
+					<th ng-click="sortData('fname')">
+						<!-- This function adds the arrow based on the sorted direction -->
+						First Name<div ng-class="getSortClass('fname')"></div>
+					</th>
+					<th ng-click="sortData('lname')">
+						Last Name<div ng-class="getSortClass('lname')"></div>
+					</th>
+					<th ng-click="sortData('hireDate')">
+						Hire Date<div ng-class="getSortClass('hireDate')"></div>
+					</th>
+					<th ng-click="sortData('salary')">
+						Salary<div ng-class="getSortClass('salary')"></div>
+					</th>
+				</tr>
+			</thead>
+			<tbody >
+				<!-- This directive repeats the same row structure for each line of data  -->
+				<tr ng-repeat="employee in employees | orderBy: sortColumn: reverseSort | limitTo: rowLimit">
+					<td>{{ employee.fname }}</td>
+					<td>{{ employee.lname }}</td>
+					<td>{{ employee.hireDate | date: "MM/dd/yyyy" }}</td>
+					<td>{{ employee.salary | currency: "$" : 0 }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
