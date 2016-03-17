@@ -18,6 +18,7 @@ th {
 	font-weight: bold;
 	text-align: left;
 	font-size: 20px;
+	cursor: pointer;
 }
 td {
 	text-align: left;
@@ -29,6 +30,7 @@ td {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-bottom: 10px solid black;
+	display: inline-block;
 }
 .arrow-down {
 	width: 0;
@@ -36,6 +38,7 @@ td {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-top: 10px solid black;
+	display: inline-block;
 }
 #rowNumber{
 	margin-top: 10px;
