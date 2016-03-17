@@ -13,6 +13,9 @@
 		<div id="rowNumber">
 		Rows <input type="number" step="1" min="15" max="42" ng-model="rowLimit"/>
 		</div>
+		<div id="searchBox">
+		Search <input type="text" placeholder="Search employees" ng-model="searchList"/>		
+		</div>
 		<table>
 			<thead>
 				<tr>
@@ -34,7 +37,7 @@
 			</thead>
 			<tbody >
 				<!-- This directive repeats the same row structure for each line of data  -->
-				<tr ng-repeat="employee in employees | orderBy: sortColumn: reverseSort | limitTo: rowLimit">
+				<tr ng-repeat="employee in employees | orderBy: sortColumn: reverseSort | limitTo: rowLimit | filter:searchList">
 					<td>{{ employee.fname }}</td>
 					<td>{{ employee.lname }}</td>
 					<td>{{ employee.hireDate | date: "MM/dd/yyyy" }}</td>
